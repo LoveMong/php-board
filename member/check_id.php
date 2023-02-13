@@ -15,26 +15,30 @@
 <body>
     <h3> 아이디 중복 체크 </h3>
     <div>
-        <?php
-            $id = $_GET["id"];
+<?php
+    $id = $_GET["id"];
 
-            if(!$id) {
-                echo("아이디를 입력해 주세요!");
-            } else {
-                $con = mysqli_connect("localhost", "study_php", "1234", "php_project_board");
-                $sql = "select * from members where id = '$id'";
-                $result = mysqli_query($con, $sql);
+    if(!$id) {
+        echo("아이디를 입력해 주세요!");
+    } else {
+        $con = mysqli_connect("localhost", "study_php", "1234", "php_project_board");
+        $sql = "select * from members where id = '$id'";
+        $result = mysqli_query($con, $sql);
 
-                $num_record = mysqli_num_rows($result);
+        $num_record = mysqli_num_rows($result);
 
-                if($num_record) {
-                    echo $id." 아이디는 이미 사용중입니다.<br>";
-                    echo "다른 아이디를 사용해 주세요!<br>";
-                } else {
-                    echo $id." 아이디는 사용 가능합니다.<br>";
-                }
-                mysql_close($con);
-            }
-        ?>
+        if($num_record) {
+            echo $id." 아이디는 이미 사용중입니다.<br>";
+            echo "다른 아이디를 사용해 주세요!<br>";
+        } else {
+            echo $id." 아이디는 사용 가능합니다.<br>";
+        }
+        mysql_close($con);
+    }
+?>
+    </div>
+    <div class="close">
+        <button type="button" onclick="javascript:self.close()">창 닫기</button>
+    </div>
 </body>
 </html>
